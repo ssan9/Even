@@ -1,6 +1,6 @@
 //import data from "/json";
 
-const EVENTFUL_SEARCH_URL ='http://api.eventful.com/json/events/search';
+const EVENTFUL_SEARCH_URL ='https://api.eventful.com/json/events/search';
 //console.log(data);
 function getDataFromApi(searchTermOne, searchTermTwo, searchTermThree, startDate, endDate, callback) {
   const query = {
