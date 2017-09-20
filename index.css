@@ -1,0 +1,103 @@
+body  {
+	  box-sizing: border-box;
+	  font: 14px/1.7 'PT Sans Caption', sans-serif;
+    margin:0;
+    padding: 0; 
+}
+
+nav {
+  padding:auto 10px;
+  border: 2px solid red;
+  text-align: right;
+  position: fixed;
+  height: 60px;
+  background-color: black;
+  width:100%;
+}
+nav ul li{
+	display: inline-block;
+}
+nav ul li a{
+	text-decoration:none;
+	color:white;
+	margin-left:10px;
+	margin-right: 10px;
+}
+
+
+
+.first-look{
+	border:1px solid red;
+	background-color: green;
+	padding-top: 5%;
+	background-image: url("https://cdn.londonandpartners.com/visit/london-organisations/alexandra-palace/92923-640x360-alexandra-palace-gig-640.jpg");
+	background-size: cover;
+  height:300px;
+  background-position: 0 55%; /* To crop the image*/
+	font-weight: 900;
+	z-index: -1;
+}
+
+.first-look header h1{
+	text-align: center;
+	font-size: 70px;
+	color:black;
+
+}
+
+form{
+	width: 100%; 
+  margin: auto;
+  text-align: center;
+  background-color: #E1F5A9;
+  border: 1px solid red;
+}
+
+.date label {
+  font-size: 18px;
+  padding-top: 0; 
+
+}
+
+form #location{
+  text-align: center;
+  margin-right: 80px;
+  margin-left: 10px;
+  margin-top: 5%; 
+
+}
+
+#quiz input{
+  border-radius: 3x;
+  width: 286px;
+}
+
+form #find{
+  text-align: center;
+  margin-left:10px;
+  margin-top: 10%; 
+
+}
+ form .date{
+  padding-top:0;
+ }
+
+ button{
+  border-radius:4px;
+  width: 280px;
+  height: 32px;
+  border:1px solid #DDDDDD;
+}
+
+button[name=search-button]{
+  background-image:url(https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.4.6_challenge_design_to_code/magnifying-glass.png); 
+  background-position:center;
+  margin-left: 20px;/*no change even if i remove it, but if i increase px it will change*/
+  width:40px;
+  background-size: 32px; 
+  margin-top: 10%;
+} 
+
+.glyphicon{
+  color: #e67e22;
+}
