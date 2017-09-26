@@ -1,18 +1,20 @@
 body  {
-	  box-sizing: border-box;
-	  font: 14px/1.7 'PT Sans Caption', sans-serif;
+        box-sizing: border-box;
+        font: 14px/1.7 'PT Sans Caption', sans-serif;
     margin:0;
     padding: 0; 
 }
 
 nav {
-  padding:auto 10px;
+      box-sizing: border-box;
+     padding:auto 10px;
   border: 2px solid red;
   text-align: right;
   position: fixed;
   height: 60px;
   background-color: black;
   width:100%;
+  left:0;
 }
 nav ul li{
 	display: inline-block;
@@ -20,14 +22,22 @@ nav ul li{
 nav ul li a{
 	text-decoration:none;
 	color:white;
-	margin-left:10px;
-	margin-right: 10px;
+	margin-left:40px;
+	margin-right: 40px;
+}
+
+.icon{
+  width:100px;
+  position:absolute;
+  left:75px;
+  border-radius:50%;
+  border:1px solid black;
+  margin-top:10px;
 }
 
 
-
 .first-look{
-	border:1px solid red;
+	border:2px solid black;
 	background-color: green;
 	padding-top: 5%;
 	background-image: url("https://cdn.londonandpartners.com/visit/london-organisations/alexandra-palace/92923-640x360-alexandra-palace-gig-640.jpg");
@@ -50,12 +60,32 @@ form{
   margin: auto;
   text-align: center;
   background-color: #E1F5A9;
-  border: 1px solid red;
+  /*background-color: #FF6600 ;*/
+  /*background-color: rgba(249, 104, 8, 0.82);*/
+  /*background-color: #f54a19;*/
+  /*background-color: #f7714c;*/
+  /*background-color: #fb673f;*/
+  /*background-color: #fb5427;*/
+  /*background-color: skyblue;*/
+
+  /*background-color: #f92b2b;*/
+
+  /*border: 2px solid black;*/
+}
+form input{
+  height:20px;
 }
 
+.location label{
+  
+}
+
+
+
 .date label {
-  font-size: 18px;
+  /*font-size: 12px;*/
   padding-top: 0; 
+
 
 }
 
@@ -72,15 +102,43 @@ form #location{
   width: 286px;
 }
 
-form #find{
+form #keyword{
   text-align: center;
   margin-left:10px;
-  margin-top: 10%; 
+  margin-top: 5%; 
+  margin-right: 10px;
+}
+  /*form .date{
+  padding-top:10px;
+  text-align: center;
+  margin-right: 80px;
+  margin-left: 30px;
+ }*/
+
+form #start_date{
+  text-align: center;
+  margin-right: 50px;
+  margin-left: 10px;
+  margin-top: 30px; 
+
 
 }
- form .date{
-  padding-top:0;
+ form #end_date{
+  text-align: center;
+  margin-left:10px;
+  margin-top: 30px;
+  margin-right: 20px;
  }
+
+.distance #miles{
+  height:30px;
+  /*margin-top: 30px;*/
+  margin-left: 10px;
+  padding-left: 10px;
+  padding: 0;
+  /*vertical-align: middle;*/
+}
+
 
  button{
   border-radius:4px;
@@ -95,9 +153,59 @@ button[name=search-button]{
   margin-left: 20px;/*no change even if i remove it, but if i increase px it will change*/
   width:40px;
   background-size: 32px; 
-  margin-top: 10%;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  height: 32px;
+  vertical-align: middle;
 } 
 
-.glyphicon{
-  color: #e67e22;
+.results{
+  /*background-color: orange;*/
+  
+  /*color:purple;*/
+  /*border:2px solid black;*/
+}
+
+.results h1{
+  padding-left: 10px;
+}
+
+.result-displayed{
+  padding-left: 20px;
+  display: inline-block;
+}
+
+.js-date h4{
+  margin-left: 0;
+}
+.js-search-results{
+  padding-left: 20px;
+  /*border:5px solid black;*/
+}
+
+h2{
+  display: inline-block;
+}
+#rating{
+  margin-top: 0;
+  margin-left: 5px;
+  width: 110px;
+  display: inline-block;
+  background-color: white;
+}
+
+.border { 
+  border: 1px solid blue;
+  
+  
+  /*padding-top:260px;*/
+  margin:0 auto;
+ }
+
+.prev{
+  display: inline-block;
+}
+.next{
+  display: inline-block;
+  margin-left: 1250px;
 }

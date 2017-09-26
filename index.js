@@ -2,15 +2,16 @@
 
 const EVENTFUL_SEARCH_URL ='https://api.eventful.com/json/events/search';
 //console.log(data);
-function getDataFromApi(searchTermOne, searchTermTwo, searchTermThree, startDate, endDate, callback) {
+function getDataFromApi(searchTermOne, searchTermTwo, searchTermThree, dates, callback) {
   const query = {
     location:searchTermOne,
     keywords:searchTermTwo,
-    start_date: startDate, //moment().format('YYYYMMDD00'),
-    end_date: endDate, //moment().format('YYYYMMDD00')
+    //start_date: startDate, //moment().format('YYYYMMDD00'),
+    //end_date: endDate, //moment().format('YYYYMMDD00')
+    date: dates,
     within:searchTermThree,
     units:'mi',
-
+    sort_order: 'date',
     app_key:'FJjthswGhP26qMXR'
     }
   $.getJSON(EVENTFUL_SEARCH_URL, query, callback).fail(function(){
@@ -22,29 +23,52 @@ function getDataFromApi(searchTermOne, searchTermTwo, searchTermThree, startDate
 //console.log("hi");
 function renderResult(result) {
   console.log(result);
+  //console.log(result.image.medium.url);
   //var vId=console.log(result.id.videoId);
   //var vId=result.id.videoId;
   //console.log(vId);
   console.log(result.title);
   //console.log(totalResults);
   return `
-    <div>
-      <h2>${result.title}</h2> <form id="rating" class="js-search-form">
-            <label id="rating-label">Rate me: 
-        <input type="hidden" name="rat" class="rat-value" value="0"/></label>
+      
+      <div class="result-displayed">
+        <h2>${result.title} </h2>
+          <form id="rating" class="js-search-form">
+             
+            <input type="hidden" name="rat" class="rat-value" value="0"/></label>
               
-              <div id="rateYo"></div>
-                <script>$("#rateYo").rateYo({
-               starWidth: "40px"
+              <div class="rateYo"></div>
+                <script>$(".rateYo").rateYo({
+               starWidth: "20px"
+
                 });</script>
               
           </form>
-      <h2>${result.city_name}</h2>
-      <p>Check out ${result.title}'s video!</p>  
-      <a class="js-result-name" href="result.url" target="_blank"> <img src="${result.image.medium.url}" alt= "${result.title}'s video"</a> 
-   
-    </div>
+
+        <h4>Date & Time: ${result.start_time}</h4>
+        
+        
+      
+        <h2>Location: ${result.city_name}</h2>
+
+    
+        <div class="image">
+            <a class="js-result-title" href="${result.url}" target="_blank"><img src="${result.image.medium.url}" width="200px"><a class="js-result-title" href="${result.url}" target="_blank"></a>
+        </div>
+
+        <p>Check out ${result.title}!</p> 
+      
+
+      </div>
+
+
+      <div class="border"></div>
+
+    
+
   `;
+  
+ // console.log("hi");
 }
 //console.log("a");
 function displayEventfulSearchData(data) {
@@ -59,11 +83,42 @@ function displayEventfulSearchData(data) {
      //const results = data.items.map( function (item, index) { 
      //return renderResult(item)
    //});
+
    
- const results = data.events.event.map((item, index) => renderResult(item));
+ const results = data.events.event.map((item, index) => {
+    console.log(item);
+    console.log(item.image);
+    //console.log(item.image.medium.url);
+
+  //item.image = !item.image ? { medium: {url: 'https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAfTAAAAJGUzYWU5MjNlLWUyYmItNGEyYi05OWM4LWNkYzI0NGU2YWZmNQ.jpg'}} : item.image;
+  if(item.image === null)
+  {
+    item.image = { medium: {url: 'https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAfTAAAAJGUzYWU5MjNlLWUyYmItNGEyYi05OWM4LWNkYzI0NGU2YWZmNQ.jpg'}};
+    //console.log(item.image.medium.url);
+  }
+  else 
+  {
+    item.image.medium.url='http:'+item.image.medium.url;
+    //item.image.medium.url=`'http:${item.image.medium.url}'`;
+
+    //console.log(item.image.medium.url);
+}
+   //console.log($(item.image.medium.url));
+    return renderResult(item); 
+})
+
+// console.log(results);
  // console.log(data);
   //$('.js-search-results').prepend(`<h4>About ${data.pageInfo.totalResults} results </h4>`);
-  $('.js-search-results').html(`About ${data.total_items} results` + results);
+  $('.js-search-results').html(`<h1>Results</h1>` +
+    `<h4>About ${data.total_items} result/s </h4>` 
+    /*results +
+    `<div class=action>
+      <div class="prev"><a href="#">&lt; prev</a></div>
+      <div class="next"><a href="#">next &gt;</a></div>
+    </div>`*/);
+
+  $(".results").html(results);
 }
 //console.log("b");
 function watchSubmit() {
@@ -84,13 +139,17 @@ function watchSubmit() {
     //console.log("c");
     const searchTermOne = $("#location").val();
     const searchTermTwo = $("#keyword").val();
-    const startDate = $("#start-date").val();
-    const endDate = $("#end-date").val();
+    const startDate = $("#start_date").val();
+    const endDate = $("#end_date").val();
     const searchTermThree = $("#miles").val();
+    const start_date=moment(startDate).format('YYYYMMDD00');
+    const end_date= moment(endDate).format('YYYYMMDD00');    
+    const dates=`${start_date}-${end_date}`;
+   // console.log(dates);
+    //console.log(start_date, end_date);
+    //console.log(searchTermOne,searchTermTwo, searchTermThree);
 
-    console.log(searchTermOne,searchTermTwo, searchTermThree);
-
-    getDataFromApi(searchTermOne, searchTermTwo, searchTermThree, startDate, endDate, displayEventfulSearchData);
+    getDataFromApi(searchTermOne, searchTermTwo, searchTermThree, dates, displayEventfulSearchData);
   });
 }
 

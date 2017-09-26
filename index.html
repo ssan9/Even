@@ -14,6 +14,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Alegreya|Dancing+Script" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Alegreya|Dancing+Script|PT+Sans+Caption" rel="stylesheet">
 	<link rel="stylesheet" href="Rateyoplugin/jquery.rateyo.css"/>
+	<link href="about.html">
+	<link href="login.html">
 
 
 
@@ -24,10 +26,12 @@
 <body>
 	
 		<nav role="navigation" class="nav_bar">
+		<img src="https://d.wildapricot.net/images/newsblog/bigstock-events-thumb.jpg?sfvrsn=0" class="icon" alt="events image">
 			<ul>
 				<li><a href="#">Home</a></li>
-	  			<li><a href="#">About</a></li>
-	  			<li><a href="#">Log in/Sign Up</a></li>
+	  			<li><a href="about.html">About</a></li>
+	  			<li><a href="login.html">Log In</a></li>
+	  			<li><a href="signup.html">Sign Up</a></li>
 	    	</ul>
 		</nav>
 
@@ -48,10 +52,10 @@
       						<input type="text" name='find' id='keyword' class="js-query" placeholder='Event Name/Keyword'></label>
       			</div>
       			<div class="date">
-      					<label for="start-date">Start Date
-      						<input placeholder='eg., This week' type="date" name='start-date' id='start-date' class="js-query"> </label>
-      					 <label for="end-date">End Date
-							<input placeholder='eg., Future Date' type="date" name='end-date' id='end-date' class="js-query"> </label>
+      					<label for="start_date">Start Date
+      						<input placeholder='eg., This week' type="date" name='start_date' id='start_date' class="js-query"> </label>
+      					 <label for="end_date">End Date
+							<input placeholder='eg., Future Date' type="date" name='end_date' id='end_date' class="js-query"> </label>
 				</div>
 				<div class="distance">
       					<label for="miles">Within Miles</label>
@@ -63,40 +67,27 @@
       							<option value="25">25</option>
       							<option value="30">30</option>
       						</select>
+      			
 						<button id="btn-search-submit" class="search-button" type="submit" name="search-button"></button> 
 				</div>		
+						
   				</section>
 			</form>
 
+		<!-- <h1>Results</h1> -->
 
-		<h2>Results</h2>
-
-		<!-- <form id="rating" class="js-search-form">
-          	<label id="rating-label">Rate me: 
-				<input type="hidden" name="rat" id="rat-value" value="0"/></label>
-          		<h2>
-            		<span id="rat-1" name="rat" class="glyphicon glyphicon-star-empty rating"></span>
-            		<span id="rat-2" name="rat" class="glyphicon glyphicon-star-empty rating"></span>
-            		<span id="rat-3" name="rat" class="glyphicon glyphicon-star-empty rating"></span>
-            		<span id="rat-4" name="rat" class="glyphicon glyphicon-star-empty rating"></span>
-            		<span id="rat-5" name="rat" class="glyphicon glyphicon-star-empty rating"></span>
-           		</h2>
-          </form> -->
-
-          <div class="js-search-results">
+		  	<div class="js-search-results">
 			
 			
             
-          </div>
+         	 </div>
           
 
+         	<div class="results">
 
-
-          <main role="main" class="js-output" aria-live="assertive" hidden>
-          <!--our results will go here!-->
-        
-      </main>
-		</main>
+          </div>
+          	
+          
 		<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
         <script src="index.js"></script>
       	<script src="moments.js"></script>
