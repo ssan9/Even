@@ -1,6 +1,6 @@
 //import data from "/json";
 
-const EVENTFUL_SEARCH_URL ='https://api.eventful.com/json/events/search?cors_filter=1';
+const EVENTFUL_SEARCH_URL ='https://api.eventful.com/json/events/search';
 //console.log(data);
 function getDataFromApi(searchTermOne, searchTermTwo, searchTermThree, dates, callback) {
   const query = {
@@ -32,32 +32,23 @@ function renderResult(result) {
   return `
       
       <div class="result-displayed">
-        <h2>${result.title} </h2>
-          <form id="rating" class="js-search-form">
-             
-            <input type="hidden" name="rat" class="rat-value" value="0"/></label>
+        <h2 id="title">${result.title} </h2>
               
-              <div class="rateYo"></div>
-                <script>$(".rateYo").rateYo({
-               starWidth: "20px"
-
-                });</script>
-              
-          </form>
-
-        <h4>Date & Time: ${result.start_time}</h4>
-        
-        
-      
-        <h2>Location: ${result.city_name}</h2>
+        <h4>${result.start_time}</h4>
+         
+        <h2>in ${result.city_name}</h2>
 
     
         <div class="image">
-            <a class="js-result-title" href="${result.url}" target="_blank"><img src="${result.image.medium.url}" width="200px"><a class="js-result-title" href="${result.url}" target="_blank"></a>
+            <a class="js-result-title" href="${result.url}" target="_blank"><img src="${result.image.medium.url}" width="200px" alt="Image not present in the data"></a>
         </div>
 
         <p>Check out ${result.title}!</p> 
       
+      <div class="rateYo" aria-labelled-by="rating">
+                <script>$(".rateYo").rateYo({
+               starWidth: "20px"
+                });</script> </div> 
 
       </div>
 
@@ -86,8 +77,8 @@ function displayEventfulSearchData(data) {
 
    
  const results = data.events.event.map((item, index) => {
-    console.log(item);
-    console.log(item.image);
+    //console.log(item);
+    //console.log(item.image);
     //console.log(item.image.medium.url);
 
   //item.image = !item.image ? { medium: {url: 'https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAfTAAAAJGUzYWU5MjNlLWUyYmItNGEyYi05OWM4LWNkYzI0NGU2YWZmNQ.jpg'}} : item.image;
@@ -98,11 +89,17 @@ function displayEventfulSearchData(data) {
   }
   else 
   {
-    item.image.medium.url='http:'+item.image.medium.url;
+    console.log(item.image.medium.url);
+    item.image.medium.url='https:'+item.image.medium.url;
     //item.image.medium.url=`'http:${item.image.medium.url}'`;
 
     //console.log(item.image.medium.url);
 }
+
+      item.start_time = moment(item.start_time).format('dddd, MMMM Do YYYY, h:mm a');
+
+      console.log(item.start_time);
+          
    //console.log($(item.image.medium.url));
     return renderResult(item); 
 })
