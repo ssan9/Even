@@ -10,10 +10,19 @@
     return image.medium.url;
    
 
-   css in js file
+   css in js file:-
 
    <script>$("h4").css({color: "red"});
         </script>
 
         <script>$("h1, h4").css({"margin-left": "20px"});
         </script>
+
+
+    <form class="rating" class="js-search-form" aria-label="rating">
+            <label for="rating"> 
+            <input type="hidden" name="rat" class="rat-value" aria-label="value="0"/></label>
+    </form>    
+
+
+
